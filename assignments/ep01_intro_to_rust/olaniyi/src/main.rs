@@ -1,61 +1,204 @@
-fn main() {
-    println!("*SIGH!");
-}
-
 use std::io;
 use rand::Rng;
 
-// bring in the input/output library
-use std::io;
-// bring in the random number generator
-use rand::Rng;
+fn main(){
+//     println!("{}",addition(2, 500));
+//     let x:i32=60;
+//     println!("this is {}", x);
 
-fn main() {
-    // ask the user to enter a number
-    println!("Please enter a number:");
+//     let numbers:[u32;3]=[1,2,3];
+//     println!("{:?}", numbers);
 
-    // make a new string to store the input
-    let mut user_input = String::new();
-    // read the input from the user
-    io::stdin().read_line(&mut user_input).expect("Failed to read input");
+//     let mut num:u16 = 0;
+//     while num <10{
+//         num = num + 1;
+//         println!("count to {num}")
+//     };
 
-    // change the input from text to a number (f64 means decimal numbers)
-    let user_number: f64 = user_input.trim().parse().expect("Please type a number!");
+//     let arr:[u16;5] = [1,2,3,4,5];
+//     for i in arr{
+//         println!("{i}");
+//     }
 
-    // create a random number between 1000 and 5000
-    let random_number = rand::thread_rng().gen_range(1000.0..=5000.0);
+//     let name:&str = "";
+//     if name == "Niyi"{
+//         println!("Dayo would call me that");
+//     }else if name == "Arokoyu"{
+//         println!("maxi would call me that")
+// }else{
+//     println!("i dont know you nigga")
+// }
 
-    // print the random number
-    println!("My number is: {}", random_number);
+// let arr :[i32; 3] =[1,2,3];
+// let arr : [i32; 20]= [];
+// let mut arr : Vec<i32> = Vec::new();
+// let mut tracker:i32 = 0;
 
-    // now call the functions to do math
-    multiply_numbers(user_number, random_number);
-    add_numbers(user_number, random_number);
-    subtract_numbers(user_number, random_number);
+// while tracker < 20{
+//     tracker +=1;
+//     arr.push(tracker);
+// }
+//     println!("{:?}", arr);
+
+
+// for i in arr {
+//     if i % 3 == 0{
+//         println!("fizz");
+//     }
+//     else if i % 5 == 0{
+//         println!("buzz");
+//     }else if i % 3 == 0 && i % 5 == 0{
+//         println!("fizzBuzz");
+//     }
+//     else{
+//         println!("{:?}", i);
+//     }
+// }
+
+
+
+// greeter();
+// addition();
+
+
+// calculator();
+// suggestion_calculator();
+
+fizz_buzz();
 }
 
-// function to multiply the numbers
-fn multiply_numbers(a: f64, b: f64) {
-    let result = a * b;
-    println!("Multiplication: {}", result);
+// This function generates numbers from 1 to 100 and prints "fizz" for multiples of 3, "buzz" for multiples of 5, and "fizzbuzz" for multiples of both.
+    // If a number is not a multiple of 3 or 5, it prints the number itself.
+fn fizz_buzz(){
+    
+    let mut arr_of_numbers = Vec::new(); // Made an empty vector to push in the numbers 1-100
+    let mut tracker:i32 = 0;
+    // As long as tracker is less than 100, we increment tracker by 1
+    while tracker < 100{
+         tracker += 1;
+        arr_of_numbers.push(tracker);
+    }
+    // Now we loop through the vector of numbers and check each number
+for i in arr_of_numbers{
+    if i % 3 == 0 && i % 5 == 0 {
+        println!("fizzbuzz");
+    }else if i % 3 == 0 {
+        println!("fizz");
+    }else if i % 5 == 0 {
+        println!("buzz");
+    }else{
+        println!("{:?}", i);
+    }
+}
 }
 
-// function to add the numbers
-fn add_numbers(a: f64, b: f64) {
-    let result = a + b;
-    println!("Addition: {}", result);
-}
+// fn suggestion_calculator(){
+//     let mut input = String::new();
+//     println!("Suggester Calculator");
+//     println!("Input your number");
+//     io::stdin().read_line(&mut input).expect("failed");
+//     let mut generator = rand::thread_rng();
+//     let rand_num = generator.gen_range(1000..=5000);
+//     let input_num: i32= input.trim().parse().expect("wrong input");
+//     let calculation = input_num * rand_num;
+//     println!("Your suggestion is: {}", calculation);
 
-// function to subtract the numbers
-fn subtract_numbers(a: f64, b: f64) {
-    let result = a - b;
-    println!("Subtraction: {}", result);
-}
+// }
 
 
 
-// This code is a simple Rust program that interacts with the user, generates a random number,
-// and performs basic arithmetic operations (multiplication, addition, subtraction, and division)
-// with the user's input and the random number. It uses the `rand` crate for generating
-// random numbers and handles user input through the standard input stream. The program includes
-// functions for each arithmetic operation, which are called after the user inputs a number.
+// fn greeter(){
+// let mut name = String::new();
+// io::stdin().read_line(&mut name).expect("failed");
+// let name = name.trim();
+// println!("hello {}", name);
+// }
+
+
+// fn addition(){
+//     let mut input1 = String::new();
+//     let mut input2 = String::new();
+//     println!("+--Addition Calculator--+");
+//     println!("First Number");
+//     io::stdin().read_line(&mut input1).expect("failed");
+//         let num1:i32 = input1.trim().parse().expect("wrong input");
+
+//         println!("Second Number");
+//     io::stdin().read_line(&mut input2).expect("failed");
+//         let num2:i32 = input2.trim().parse().expect("wrong input");
+
+//     let sum = num1 + num2;
+//     println!("your answer by addition is {}", sum);
+// }
+// fn subtraction(){
+//     let mut input1 = String::new();
+//     let mut input2 = String::new();
+//     println!("+--Subtraction Calculator--+");
+//     println!("First Number");
+//     io::stdin().read_line(&mut input1).expect("failed");
+//         let num1:i32 = input1.trim().parse().expect("wrong input");
+
+//         println!("Second Number");
+//     io::stdin().read_line(&mut input2).expect("failed");
+//         let num2:i32 = input2.trim().parse().expect("wrong input");
+
+//     let minus = num1 - num2;
+//     println!("your answer by subtraction is {}", minus);
+// }
+// fn division(){
+//     let mut input1 = String::new();
+//     let mut input2 = String::new();
+//     println!("+--division Calculator--+");
+//     println!("First Number");
+//     io::stdin().read_line(&mut input1).expect("failed");
+//         let num1:i32 = input1.trim().parse().expect("wrong input");
+
+//         println!("Second Number");
+//     io::stdin().read_line(&mut input2).expect("failed");
+//         let num2:i32 = input2.trim().parse().expect("wrong input");
+
+//     let divided = num1 / num2;
+//     println!("your answer by division is {}", divided);
+// }
+// fn multiplication(){
+//     let mut input1 = String::new();
+//     let mut input2 = String::new();
+//     println!("+--multiplication Calculator--+");
+//     println!("First Number");
+//     io::stdin().read_line(&mut input1).expect("failed");
+//         let num1:i32 = input1.trim().parse().expect("wrong input");
+
+//         println!("Second Number");
+//     io::stdin().read_line(&mut input2).expect("failed");
+//         let num2:i32 = input2.trim().parse().expect("wrong input");
+
+//     let multiply = num1 * num2;
+//     println!("your answer by multiplication is {}", multiply);
+// }
+
+// fn calculator(){
+//     let mut input = String::new();
+//     println!("+--Calculator--+");
+//     println!("Enter 1 for Addition");
+//     println!("Enter 2 for Subtraction");
+//     println!("Enter 3 for Division");
+//     println!("Enter 4 for Multiplication");
+//     io::stdin().read_line(&mut input).expect("failed");
+//     let choice: i32 = input.trim().parse().expect("wrong input");
+
+//     match choice {
+//         1 => addition(),
+//         2 => subtraction(),
+//         3 => division(),
+//         4 => multiplication(),
+//         _ => println!("Invalid choice, please try again."),
+//     }
+
+//     println!("Thank you for using the calculator!");
+// }
+
+
+
+
+
+

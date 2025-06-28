@@ -1,0 +1,12 @@
+# Ignore build output
+/target
+
+# Ignore backup files
+*.log
+*.tmp
+*.swp
+
+# Ignore editor config (optional)
+.vscode/
+.idea/
+.DS_Store

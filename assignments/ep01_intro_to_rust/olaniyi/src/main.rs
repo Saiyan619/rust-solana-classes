@@ -1,204 +1,99 @@
-use std::io;
-use rand::Rng;
+// use std::io;
+// use rand::Rng;
 
 fn main(){
-//     println!("{}",addition(2, 500));
-//     let x:i32=60;
-//     println!("this is {}", x);
+    /////Structs/////
+    // #[derive(Debug)]
+    // struct User {
+    //     name: String,
+    //     age: u32,
+    //     is_married: bool,
+    //     my_type: String
 
-//     let numbers:[u32;3]=[1,2,3];
-//     println!("{:?}", numbers);
+    // }
 
-//     let mut num:u16 = 0;
-//     while num <10{
-//         num = num + 1;
-//         println!("count to {num}")
-//     };
+    // impl User {
+    //     fn greeter(&self){
+    //         println!("hello im {} and im {} years old and im into {}", self.name, self.age, self.my_type);
+    //     }
+    // }
 
-//     let arr:[u16;5] = [1,2,3,4,5];
-//     for i in arr{
-//         println!("{i}");
-//     }
+    // let user = User {
+    //     name: String::from("Arokoyu Olaniyi"),
+    //     age: 22,
+    //     is_married: false,
+    //     my_type: String::from("Light Skins")
+    // };
 
-//     let name:&str = "";
-//     if name == "Niyi"{
-//         println!("Dayo would call me that");
-//     }else if name == "Arokoyu"{
-//         println!("maxi would call me that")
-// }else{
-//     println!("i dont know you nigga")
-// }
+        #[derive(Debug)]
+        struct Product {
+            name: String,
+            price: f64,
+            in_stock: bool,
+            message_is_in_stock: String
+        }
 
-// let arr :[i32; 3] =[1,2,3];
-// let arr : [i32; 20]= [];
-// let mut arr : Vec<i32> = Vec::new();
-// let mut tracker:i32 = 0;
-
-// while tracker < 20{
-//     tracker +=1;
-//     arr.push(tracker);
-// }
-//     println!("{:?}", arr);
-
-
-// for i in arr {
-//     if i % 3 == 0{
-//         println!("fizz");
-//     }
-//     else if i % 5 == 0{
-//         println!("buzz");
-//     }else if i % 3 == 0 && i % 5 == 0{
-//         println!("fizzBuzz");
-//     }
-//     else{
-//         println!("{:?}", i);
-//     }
-// }
+        impl Product{
+            fn is_in_stock(&mut self) {
+                if self.in_stock{
+                    self.message_is_in_stock=String::from("Product is in stock!!");
+                }else{
+                    self.message_is_in_stock=String::from("Product is out of stock!!");
+                }
+            }
+        }
 
 
+        let mut actual_product = Product {
+            name: String::from("Nike Air Force 1s"),
+            price: 50.99,
+            in_stock:true,
+            message_is_in_stock: String::from("")
+        };
 
-// greeter();
-// addition();
+        actual_product.is_in_stock();
 
 
-// calculator();
-// suggestion_calculator();
+        println!("{:?}", actual_product);
 
-fizz_buzz();
+        enum OrderStatus {
+            Pending,
+            Shipped,
+            Delivered
+        }
+
+        let status = OrderStatus::Pending;
+
+
+        match status {
+            OrderStatus::Pending => println!("your order is pending!!"),
+            OrderStatus::Delivered=>println!("your order is delivered!!"),
+            OrderStatus::Shipped=>println!("your order is shipped!!")
+
+        }
+        
+
+    //////// ENUMS ////////////
+    //  #[derive(Debug)]
+    // enum GameDirections {
+    //     Up,
+    //     Down,
+    //     Left,
+    //     Right
+    // }
+
+    // let direction = GameDirections::Left;
+
+    // match direction {
+    //     GameDirections::Up => println!("you moved up"),
+    //     GameDirections::Down => println!("you moved down"),
+    //     GameDirections::Left => println!("you moved left"),
+    //     GameDirections::Right => println!("you moved right"),
+    // }
+
+    // println!("{:?}", direction);
+
+    // println!("{:?}",user);
+    // user.greeter();
 }
-
-// This function generates numbers from 1 to 100 and prints "fizz" for multiples of 3, "buzz" for multiples of 5, and "fizzbuzz" for multiples of both.
-    // If a number is not a multiple of 3 or 5, it prints the number itself.
-fn fizz_buzz(){
-    
-    let mut arr_of_numbers = Vec::new(); // Made an empty vector to push in the numbers 1-100
-    let mut tracker:i32 = 0;
-    // As long as tracker is less than 100, we increment tracker by 1
-    while tracker < 100{
-         tracker += 1;
-        arr_of_numbers.push(tracker);
-    }
-    // Now we loop through the vector of numbers and check each number
-for i in arr_of_numbers{
-    if i % 3 == 0 && i % 5 == 0 {
-        println!("fizzbuzz");
-    }else if i % 3 == 0 {
-        println!("fizz");
-    }else if i % 5 == 0 {
-        println!("buzz");
-    }else{
-        println!("{:?}", i);
-    }
-}
-}
-
-// fn suggestion_calculator(){
-//     let mut input = String::new();
-//     println!("Suggester Calculator");
-//     println!("Input your number");
-//     io::stdin().read_line(&mut input).expect("failed");
-//     let mut generator = rand::thread_rng();
-//     let rand_num = generator.gen_range(1000..=5000);
-//     let input_num: i32= input.trim().parse().expect("wrong input");
-//     let calculation = input_num * rand_num;
-//     println!("Your suggestion is: {}", calculation);
-
-// }
-
-
-
-// fn greeter(){
-// let mut name = String::new();
-// io::stdin().read_line(&mut name).expect("failed");
-// let name = name.trim();
-// println!("hello {}", name);
-// }
-
-
-// fn addition(){
-//     let mut input1 = String::new();
-//     let mut input2 = String::new();
-//     println!("+--Addition Calculator--+");
-//     println!("First Number");
-//     io::stdin().read_line(&mut input1).expect("failed");
-//         let num1:i32 = input1.trim().parse().expect("wrong input");
-
-//         println!("Second Number");
-//     io::stdin().read_line(&mut input2).expect("failed");
-//         let num2:i32 = input2.trim().parse().expect("wrong input");
-
-//     let sum = num1 + num2;
-//     println!("your answer by addition is {}", sum);
-// }
-// fn subtraction(){
-//     let mut input1 = String::new();
-//     let mut input2 = String::new();
-//     println!("+--Subtraction Calculator--+");
-//     println!("First Number");
-//     io::stdin().read_line(&mut input1).expect("failed");
-//         let num1:i32 = input1.trim().parse().expect("wrong input");
-
-//         println!("Second Number");
-//     io::stdin().read_line(&mut input2).expect("failed");
-//         let num2:i32 = input2.trim().parse().expect("wrong input");
-
-//     let minus = num1 - num2;
-//     println!("your answer by subtraction is {}", minus);
-// }
-// fn division(){
-//     let mut input1 = String::new();
-//     let mut input2 = String::new();
-//     println!("+--division Calculator--+");
-//     println!("First Number");
-//     io::stdin().read_line(&mut input1).expect("failed");
-//         let num1:i32 = input1.trim().parse().expect("wrong input");
-
-//         println!("Second Number");
-//     io::stdin().read_line(&mut input2).expect("failed");
-//         let num2:i32 = input2.trim().parse().expect("wrong input");
-
-//     let divided = num1 / num2;
-//     println!("your answer by division is {}", divided);
-// }
-// fn multiplication(){
-//     let mut input1 = String::new();
-//     let mut input2 = String::new();
-//     println!("+--multiplication Calculator--+");
-//     println!("First Number");
-//     io::stdin().read_line(&mut input1).expect("failed");
-//         let num1:i32 = input1.trim().parse().expect("wrong input");
-
-//         println!("Second Number");
-//     io::stdin().read_line(&mut input2).expect("failed");
-//         let num2:i32 = input2.trim().parse().expect("wrong input");
-
-//     let multiply = num1 * num2;
-//     println!("your answer by multiplication is {}", multiply);
-// }
-
-// fn calculator(){
-//     let mut input = String::new();
-//     println!("+--Calculator--+");
-//     println!("Enter 1 for Addition");
-//     println!("Enter 2 for Subtraction");
-//     println!("Enter 3 for Division");
-//     println!("Enter 4 for Multiplication");
-//     io::stdin().read_line(&mut input).expect("failed");
-//     let choice: i32 = input.trim().parse().expect("wrong input");
-
-//     match choice {
-//         1 => addition(),
-//         2 => subtraction(),
-//         3 => division(),
-//         4 => multiplication(),
-//         _ => println!("Invalid choice, please try again."),
-//     }
-
-//     println!("Thank you for using the calculator!");
-// }
-
-
-
-
-
 

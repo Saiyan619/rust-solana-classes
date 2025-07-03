@@ -25,53 +25,94 @@ fn main(){
     //     my_type: String::from("Light Skins")
     // };
 
-        #[derive(Debug)]
-        struct Product {
-            name: String,
-            price: f64,
-            in_stock: bool,
-            message_is_in_stock: String
+        // #[derive(Debug)]
+        // struct Product {
+        //     name: String,
+        //     price: f64,
+        //     in_stock: bool,
+        //     message_is_in_stock: String
+        // }
+
+        // impl Product{
+        //     fn is_in_stock(&mut self) {
+        //         if self.in_stock{
+        //             self.message_is_in_stock=String::from("Product is in stock!!");
+        //         }else{
+        //             self.message_is_in_stock=String::from("Product is out of stock!!");
+        //         }
+        //     }
+        // }
+
+
+        // let mut actual_product = Product {
+        //     name: String::from("Nike Air Force 1s"),
+        //     price: 50.99,
+        //     in_stock:true,
+        //     message_is_in_stock: String::from("")
+        // };
+
+        // actual_product.is_in_stock();
+
+
+        // println!("{:?}", actual_product);
+
+        // enum OrderStatus {
+        //     Pending,
+        //     Shipped,
+        //     Delivered
+        // }
+
+        // let status = OrderStatus::Pending;
+
+
+        // match status {
+        //     OrderStatus::Pending => println!("your order is pending!!"),
+        //     OrderStatus::Delivered=>println!("your order is delivered!!"),
+        //     OrderStatus::Shipped=>println!("your order is shipped!!")
+
+        // }
+        
+     #[derive(Debug)]
+        struct Book1 {
+            title: String,
+            author: String,
+            pages:u32,
+            status:Status
         }
 
-        impl Product{
-            fn is_in_stock(&mut self) {
-                if self.in_stock{
-                    self.message_is_in_stock=String::from("Product is in stock!!");
-                }else{
-                    self.message_is_in_stock=String::from("Product is out of stock!!");
+        struct Book2 {
+            title: String,
+            author: String,
+            pages:u32,
+            is_available:bool
+        }
+
+        impl Book1 {
+            fn status(&self){
+                match self.status {
+                    Status::Available=>println!("book is available"),
+                    Status::CheckedOut=>println!("book is not available")
                 }
             }
         }
-
-
-        let mut actual_product = Product {
-            name: String::from("Nike Air Force 1s"),
-            price: 50.99,
-            in_stock:true,
-            message_is_in_stock: String::from("")
-        };
-
-        actual_product.is_in_stock();
-
-
-        println!("{:?}", actual_product);
-
-        enum OrderStatus {
-            Pending,
-            Shipped,
-            Delivered
-        }
-
-        let status = OrderStatus::Pending;
-
-
-        match status {
-            OrderStatus::Pending => println!("your order is pending!!"),
-            OrderStatus::Delivered=>println!("your order is delivered!!"),
-            OrderStatus::Shipped=>println!("your order is shipped!!")
-
-        }
         
+        let actual_book = Book1 {
+            title:String::from("game of thrones"),
+            author:String::from("sanza stark"),
+            pages: 5000,
+            status:Status::Available
+            // is_available: true
+        };
+#[derive(Debug)]
+        enum Status {
+    Available,
+    CheckedOut,
+}
+
+
+        println!("{:?}", actual_book);
+        actual_book.status()
+
 
     //////// ENUMS ////////////
     //  #[derive(Debug)]
